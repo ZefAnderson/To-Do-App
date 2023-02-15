@@ -1,0 +1,13 @@
+@import "variables.scss";
+.navbar {
+    border-style: solid;
+    border-width: $borderview;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.listInfo {
+    display: flex;
+    flex-direction: column;
+}
