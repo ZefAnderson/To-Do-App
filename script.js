@@ -1,31 +1,19 @@
 const lists = {
-    1: {
-    name: "Shopping",
+  1: {
+    name: "Shopping list",
     todos: [
-    {text: "Bananas",
-    completed: false},
-    {text: "Butter",
-    completed: false},
-    {text: "Milk",
-    completed: false},
-    {text: "Potatoes",
-    completed: false},
-    {text: "Beef",
-    completed: false},
+      {
+        text: 'bananas',
+        completed: false
+      },
+      {
+        text: '1 lbs ground turkey',
+        completed: false
+      }
     ]
-},
-    2: {
-    name: "School",
-    todos: [
-    {text: "Art",
-    completed: false},
-    {text: "Social Science",
-    completed: false},
-    {text: "Math",
-    completed: false},
-    ] 
-}   
+  },
 }
+const currentList = lists[0];
 function render() {
     // this will hold the html that will be displayed in the sidebar
     let listsHtml = '<ul class="list-group">';
@@ -50,9 +38,8 @@ function render() {
     // print out the todos
     document.getElementById('current-list-todos').innerHTML = todosHtml;
    }
-function addTodo() {
-    // get the todo text from the todo input box
-    const text = document.getElementById('todo-input-box').value;
+function addList() {
+    const text = document.getElementById('new-list-name-input').value;
     if(text) {
     currentList.todos.push({
     text: text,
@@ -61,3 +48,14 @@ function addTodo() {
     render();
     }
 }
+function addTodo() {
+  // get the todo text from the todo input box
+  const text = document.getElementById('todo-input-box').value;
+  if(text) {
+    currentList.todos.push({
+      text: text,
+      completed: false
+    })
+    render();
+  }
+ }
