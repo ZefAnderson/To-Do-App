@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="outer">
@@ -14,19 +14,20 @@
                 Teux Duex
         </nav>
         <div class="container">
-            <div class="row">
-                <input id="new-list-name-input">
-                <button class="btn btn-primary" onclick="addList()" placeholder="new todo list">Add</button>
+            <div class="listView">
+                <input id="new-list-input" placeholder="new todo list">
+                <button id="addListBtn">Add</button>
                 <button>Delete Current List</button>
                 <button>Reset Storage</button> 
             </div>
             <div class="listInfo">
-                <div class="listName"></div>
+                <div id="current-list-name"></div>
                 <div class="addListItem">
+                    <div id="lists"></div>
                     <input type="text" placeholder="add item">
                     <button>Add</button>
                 </div>
-                <div class="listItems"></div>
+                <div id="current-list-todos"></div>
             </div>
         </div>
     </div>
