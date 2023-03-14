@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="outer">
@@ -15,19 +15,21 @@
         </nav>
         <div class="container">
             <div class="listView">
-                <input id="new-list-input" placeholder="new todo list">
-                <button id="addListBtn">Add</button>
+                <div id="lists"></div>
+                <input id="add-list" placeholder="new todo list">
+                <button onclick="addList()">Add</button>
                 <button>Delete Current List</button>
                 <button>Reset Storage</button> 
             </div>
             <div class="listInfo">
                 <div id="current-list-name"></div>
                 <div class="addListItem">
-                    <div id="lists"></div>
-                    <input type="text" placeholder="add item">
-                    <button>Add</button>
                 </div>
                 <div id="current-list-todos"></div>
+                <div>
+                    <input id="add-item" type="text" placeholder="add item">
+                    <button onclick="addToDo()">Add</button>
+                </div>
             </div>
         </div>
     </div>
