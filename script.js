@@ -1,14 +1,21 @@
-const localStorageContent = localStorage.getItem("listOfLists");
+const localStorageContent = localStorage.getItem("serialized");
 let lists;
-let listName;
-let todos;
 if(localStorageContent === null) {
     lists = [];
 } else {
-    lists = [localStorage.getItem("listOfLists")];
+    lists = JSON.parse(localStorage.getItem("serialized"));
+}
+
+const listItemStorage = localStorage.getItem("serializedTodos");
+let todos;
+if(listItemStorage === null) {
+  todos = [];
+} else {
+  todos = JSON.parse(localStorage.getItem("serializedTodos"));
 }
 
 document.getElementById("lists").innerHTML = localStorage.getItem("history");
+document.getElementById("todos").innerHTML = localStorage.getItem("todoHistory");
 
 function addList() {
   let text = document.getElementById("add-list").value;
@@ -24,30 +31,32 @@ function addList() {
   document.getElementById("add-list").value = '';
 }
 
-// function addToDo() {
-//   const text = document.getElementById('add-item').value;
-//   if(text) {
-//     currentList.todos.push({
-//       text: text,
-//       completed: false
-//     })
-//     render();
-//   }
-//   document.getElementById('add-item').value = '';
-// }
+function addToDo() {
+  let temp = document.getElementById('add-item').value;
+  if(temp) {
+    todos.push({
+      task: temp,
+      completed: false
+    });
+    let serializedTodos = JSON.stringify(todos);
+    localStorage.setItem("serializedTodos", serializedTodos);
+    let todosHtml = '<ul class="list-group-flush">';
+    todosHtml += '</ul>';
+    todos.forEach((todo) => {
+      todosHtml += `<li class="list-group-item">${todo.task}</li>`;
+    });
+    localStorage.setItem("todoHistory", todosHtml);
+    document.getElementById("todos").innerHTML = localStorage.getItem("todoHistory")
+    }
+  document.getElementById('add-item').value = '';
+}
 
 function render() {
   let listsHtml = '<ul class="list-group">';
   listsHtml += '</ul>';
-  let text = document.getElementById("add-list").value;
   lists.forEach((list) => {
     listsHtml += `<li class="list-group-item">${list.listName}</li>`;
   });
   localStorage.setItem("history", listsHtml);
-  let history = listsHtml;
-  document.getElementById("lists").innerHTML = history;
-  // let todosHtml = '<ul class="list-group-flush">';
-  // lists.todos.forEach((todo) => {
-  //   todosHtml += `<li class="list-group-item">${todo.text}</li>`;
-  // });
-}
+  document.getElementById("lists").innerHTML = localStorage.getItem("history");
+  }
