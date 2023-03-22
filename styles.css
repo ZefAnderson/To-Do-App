@@ -13,18 +13,32 @@
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
 .listView {
   display: flex;
   flex-direction: column;
+  background-color: rgba(47, 77, 77, .25);
+  padding: 0px 10px;
+}
+.listView li {
+  padding: 5px 0px;
+  font-size: 1.25em;
+}
+.listView li:hover {
+  background-color: rgba(47, 77, 77, .5);
+}
+
+.todoView {
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
 }
 
 button {
-  margin-bottom: 10px;
+  margin: 10px 0px;
 }
 
 li {
   list-style-type: none;
-}/*# sourceMappingURL=styles.css.map */
+}

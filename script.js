@@ -59,4 +59,8 @@ function render() {
   });
   localStorage.setItem("history", listsHtml);
   document.getElementById("lists").innerHTML = localStorage.getItem("history");
-  }
+}
+
+function deleteList() {
+  
+}
